@@ -29,6 +29,59 @@ The counter example is when the lenth of two lists are different. Thus, I will p
 
 '''
 ex. [4,3,2,1] vs. [3,2,1] (1234 + 123=1357) => [4,3,2,1] vs. [3,2,1,0] => [7,5,3,1]
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        list1=[]
+        list2=[]
+        while l1:
+            list1.append(l1.val)
+            l1 = l1.next
+        while l2:
+            list2.append(l2.val)
+            l2 = l2.next
+
+        if len(list1) > len(list2):
+            foo2 = len(list1)-len(list2)
+            foo3 = [0]*foo2
+            list2.extend(foo3)
+        elif len(list1) < len(list2):
+            foo2 = len(list2)-len(list1)
+            foo3 = [0]*foo2
+            list1.extend(foo3)
+            
+        mlen = len(list1)
+        output = []
+        
+        for i in range(mlen-1):
+            sum = list1[i] + list2[i]
+            if sum < 10:
+                output.append(sum)
+            else:
+                sum = sum - 10
+                output.append(sum)
+                list1[i+1] = list1[i+1]+1
+        sum = list1[mlen-1] + list2[mlen-1]
+        if sum < 10:
+            output.append(sum)
+        else:
+            output.append(sum-10)
+            output.append(1)
+        d = ["k{0}".format(i) for i in range(len(output))]
+        for i in range(len(d)):
+            d[i] = ListNode()       
+        for i in range(len(d)):
+            if i < len(d)-1:
+                d[i].val = output[i]
+                d[i].next = d[i+1]
+            else:
+                d[i].val = output[i]
+        return d[0]
 '''
 
 ##Learns
