@@ -1,44 +1,44 @@
-#3. Longest Substring Without Repeating Characters(Medium)
+# 3. Longest Substring Without Repeating Characters(Medium)
 
-##Given a string s, find the length of the longest substring without repeating characters.
+## Given a string s, find the length of the longest substring without repeating characters.
 
  
 
-##Example 1:
-'''
+## Example 1:
+```
 Input: s = "abcabcbb"
 Output: 3
 Explanation: The answer is "abc", with the length of 3.
-
-##Example 2:
-'''
+```
+## Example 2:
+```
 Input: s = "bbbbb"
 Output: 1
 Explanation: The answer is "b", with the length of 1.
-'''
+```
 
-##Example 3:
-'''
+## Example 3:
+```
 Input: s = "pwwkew"
 Output: 3
 Explanation: The answer is "wke", with the length of 3.
 Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
-'''
+```
 
-##Example 4:
-'''
+## Example 4:
+```
 Input: s = ""
 Output: 0
-'''
+```
 
-##Constraints:
-'''
+## Constraints:
+```
 0 <= s.length <= 5 * 104
 s consists of English letters, digits, symbols and spaces.
-'''
+```
 
 ## My solution (bad speed and memory)
-'''
+```
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         if s is False:
@@ -81,13 +81,13 @@ class Solution:
             # else:
                 # outputs[i] = outputs[i]-1
         return max(outputs)
-'''
+```
 
 
-### What I learned
+## What I learned
 - First, need to carefully decide what I will use as a criterion and keep consistent
--- For example: abcabcddbb
--- Option 1: use longest strings = [3,3,...] 
--- Option 2: use the length which firstly repeated string show up. = [4,4, ...] => in this case, if there is no repeated measure, then it can cause some problems. Thus, we need to careful to define the variable.
+- - For example: abcabcddbb
+- - Option 1: use longest strings = [3,3,...] 
+- - Option 2: use the length which firstly repeated string show up. = [4,4, ...] => in this case, if there is no repeated measure, then it can cause some problems. Thus, we need to careful to define the variable.
 - think about the outlier cases .
 - Think about the idea of exclude, include, and overlapped sets.
